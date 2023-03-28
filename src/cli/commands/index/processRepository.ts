@@ -47,7 +47,7 @@ export const processRepository = async (
   dryRun?: boolean,
 ) => {
   const encoding = encoding_for_model('gpt-3.5-turbo');
-  const rateLimit = new APIRateLimit(25);
+  const rateLimit = new APIRateLimit(10);
 
   const callLLM = async (
     prompt: string,
@@ -248,7 +248,8 @@ export const processRepository = async (
           contentType,
           folderPrompt,
         ),
-        models[LLMModels.GPT4].llm,
+        // model.llm,
+        models[LLMModels.GPT3].llm,
       );
 
       const folderSummary: FolderSummary = {
